@@ -33,9 +33,9 @@
                        
             gallery.innerHTML = images.map(img => `
                 <div id="img-card-${img.id}" style="border: 1px solid #ccc; padding: 10px; text-align: center;">
-                    <img src="${img.filepath}" style="width: 150px; height: 150px; object-fit: cover; display: block; margin-bottom: 5px;">
+                    <img src="${img.imageData}" style="width: 150px; height: 150px; object-fit: cover; display: block; margin-bottom: 5px;">
                     <span style="font-size: 10px;">ID: ${img.id}</span><br>
-                    <button onclick="deleteImage(${img.id})" style="background: #4d0000; color: white; border: none; padding: 5px; cursor: pointer; border-radius: 3px;">
+                    <button onclick="deleteImage(${img.id})" style="background: #ff4d4d; color: white; border: none; padding: 5px; cursor: pointer; border-radius: 3px;">
                         Delete
                     </button>
                 </div>
