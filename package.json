@@ -1,0 +1,27 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "For university site for uploading images",
+  "homepage": "https://github.com/AlinaSHforwork/images-uni-site#readme",
+  "bugs": {
+    "url": "https://github.com/AlinaSHforwork/images-uni-site/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlinaSHforwork/images-uni-site.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "pg": "^8.18.0"
+  }
+}
