@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; background: #f4f4f9; flex-direction: column; align-items: center; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
+        input { margin-bottom: 1rem; }
+        button { cursor: pointer; background: #4d0000; color: white; border: none; padding: 10px 20px; border-radius: 4px; }
+        .gallery { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .img-card { border: 1px solid #ccc; padding: 10px; text-align: center; background: white; max-width: 170px; }
+        .pagination a { margin: 0 15px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Upload Image (max 10MB)</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <hr style="width:100%; max-width:900px; margin: 30px 0;">
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+        {{#each images}}
+        <div class="img-card">
+            <img src="/uploads/{{filename}}" style="width: 150px; height: 150px; object-fit: cover; display: block; margin-bottom: 5px;">
+            <span style="font-size: 10px;">ID: {{id}}<br>{{filename}}</span>
+            <form method="POST" action="/delete/{{id}}" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                <button type="submit" style="background: #ff4d4d; color: white; border: none; padding: 5px 12px; cursor: pointer; border-radius: 3px;">Delete</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+
+    {{#if images.length}}
+    <div class="pagination" style="margin-top: 30px;">
+        {{#if hasPrev}}
+            <a href="/?page={{prevPage}}">← Previous</a>
+        {{/if}}
+        <span>Page <strong>{{currentPage}}</strong> of {{totalPages}}</span>
+        {{#if hasNext}}
+            <a href="/?page={{nextPage}}">Next →</a>
+        {{/if}}
+    </div>
+    {{else}}
+    <p style="color: gray; margin-top: 30px;">No images yet. Upload one above!</p>
+    {{/if}}
+</body>
+</html>
