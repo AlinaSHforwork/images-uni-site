@@ -108,8 +108,8 @@ app.post('/upload', (req, res) => {
             );
 
             res.redirect('/?page=1');
-        } catch (saveErr) {
-            console.error(saveErr);
+        } catch (err) {
+            console.error(err);
             res.status(500).send('Error saving image');
         }
     });
